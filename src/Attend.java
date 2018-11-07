@@ -6,9 +6,8 @@ public class Attend {
 	private static final int ATTENDANCE = 0;
 	
 	private int date = 16;
-	private int[] attend = new int[date];
 	
-	public void check(int attend) {
+	public void check(int absent) {
 		
 		
 	}
