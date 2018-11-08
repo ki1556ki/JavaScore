@@ -8,8 +8,8 @@ public class Lab7View extends JApplet
 {
 	// Declare variables
 	
-	public JLabel  jl1, jl2, jl3, jl4, jl5, jl6, jl7, jl8, jl9;
-	public JTextField tf1, tf2, tf3, tf4, tf5, tf6, tf7, tf8, tf9, tf10, tf11, tf12;
+	public JLabel  jl_title, jl2, jl3, jl4, jl5, jl6, jl7, jl8, jl9,jl_stunum,jl_weight,jl_sub;
+	public JTextField tf1, tf2, tf3, tf4, tf5, tf6, tf7, tf8, tf9, tf10, tf11, tf12,tf_stunum;
 	public JButton save, change, calculate, add, clear, display, modify, delete, sort, empty;
 	public JList studentList;
 	public DefaultListModel model;
@@ -20,7 +20,7 @@ public class Lab7View extends JApplet
 	
 	public void init()
 	{
-		setSize(950,500);
+		setSize(1000,600);
 		setLayout(new GridLayout(6,1,0,0));
 		constructLabels();
 		constructTextFields();
@@ -31,26 +31,30 @@ public class Lab7View extends JApplet
 	public void constructLabels()
 	{
 		Font f1 = new Font("Serif", Font.BOLD, 40);
-		jl1 = new JLabel("Student Grade Database");
-			jl1.setFont(f1);
-			jl1.setForeground(Color.RED);
-		jl2 = new JLabel("Enter Weight as '%':");
-		jl3 = new JLabel("Enter Student Name ===>");
-		jl4 = new JLabel("Exam 1");
-		jl5 = new JLabel("Exam 2");
-		jl6 = new JLabel("Exam 3");
-		jl7 = new JLabel("Exam 4");
-		jl8 = new JLabel("Lab Average");
-		jl9 = new JLabel("Final Average");	
+		jl_title = new JLabel("명지대 학생 성적 처리 프로그램 ");
+			jl_title.setFont(f1);
+			jl_title.setForeground(Color.RED);
+		jl2 = new JLabel("성적의 비율을 변경하려면 입력하세요.");
+		jl_weight = new JLabel("Default : 중간 25% 기말 25% 과제 10% 퀴즈 10% 발표 10% 보고서 10% 출결 10%");
+		jl_sub = new JLabel("과목");
+		jl3 = new JLabel("학생 이름");
+		jl4 = new JLabel("중간고사 성적 ");
+		jl5 = new JLabel("기말고사 성적 ");
+		jl6 = new JLabel("과제 점수 ");
+		jl7 = new JLabel("프로젝트 팀 ");
+		jl8 = new JLabel("프로젝트 점수 ");
+		jl9 = new JLabel("출석점수");
+		jl_stunum = new JLabel("학번");
 	}
 	public void constructTextFields()
 	{
-		tf1 = new JTextField("", 5);
+		tf1 = new JTextField("", 5); // 
 		tf2 = new JTextField("", 5);
 		tf3 = new JTextField("", 5);
 		tf4 = new JTextField("", 5);
 		tf5 = new JTextField("", 5);
-		tf6 = new JTextField("", 20);
+		tf6 = new JTextField("", 5); // 이름입력
+		tf_stunum = new JTextField("", 5); // 학번입
 		tf7 = new JTextField("", 10);
 		tf8 = new JTextField("", 10);
 		tf9 = new JTextField("", 10);
@@ -95,10 +99,10 @@ public class Lab7View extends JApplet
 	}
 	public void constructLayout()
 	{
-		p1 = new JPanel(new FlowLayout());
+		p1 = new JPanel(new FlowLayout()); // 제목 
 			add(p1);
-			p1.add(jl1);
-		p2 = new JPanel(new FlowLayout());
+			p1.add(jl_title);
+		p2 = new JPanel(new FlowLayout());  // 성적 비율입력
 			add(p2);
 			p2.add(jl2);
 			p2.add(tf1);
@@ -108,11 +112,15 @@ public class Lab7View extends JApplet
 			p2.add(tf5);
 			p2.add(save);
 			p2.add(change);
-		p3 = new JPanel(new FlowLayout());
+			p2.add(jl_weight);
+		p3 = new JPanel(new FlowLayout()); // 이름 학번 입력
 			add(p3);
 			p3.add(jl3);
 			p3.add(tf6);
-		p4 = new JPanel(new GridLayout(2,6,50,0));
+			p3.add(jl_stunum);
+			p3.add(tf_stunum);
+			
+		p4 = new JPanel(new GridLayout(2,6,50,0)); // 성적입력 
 			add(p4);
 			p4.add(jl4);
 			p4.add(jl5);
@@ -126,12 +134,12 @@ public class Lab7View extends JApplet
 			p4.add(tf10);
 			p4.add(tf11);
 			p4.add(tf12);
-		p5 = new JPanel(new FlowLayout());
+		p5 = new JPanel(new FlowLayout()); // 버튼 입력 
 			add(p5);
 			p5.add(calculate);
 			p5.add(add);
 			p5.add(clear);
-		p7 = new JPanel(new GridLayout(5,1));
+		p7 = new JPanel(new GridLayout(5,1)); // 
 			p7.add(display);
 			p7.add(modify);
 			p7.add(delete);
