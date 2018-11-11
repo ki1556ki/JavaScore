@@ -1,14 +1,21 @@
 package esh;
 
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -16,11 +23,14 @@ import java.awt.event.ActionListener;
 @SuppressWarnings("serial")
 public class Frame extends JFrame implements ActionListener{
 	public Frame() {
-	setTitle("메뉴 구성하기 ");
+	setTitle("aoop proj ");
+	setSize(550,800);
+	setLayout(new GridLayout(2,1,0,0));
+	constructLayout();
+	
 	makeMenu();
-	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setSize(1000,800);
 	setVisible(true);
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	
@@ -34,7 +44,7 @@ public class Frame extends JFrame implements ActionListener{
 	JMenu stu_manage = new JMenu("학생관리");
 	JMenu score_manage = new JMenu("성적관리");
 	JMenu statics = new JMenu("통계");
-	JMenu view = new JMenu("시각화");
+	JMenu graph = new JMenu("그래프");
 	
 	item = new JMenuItem("Save DB");
 	item.addActionListener(this);
@@ -107,9 +117,33 @@ public class Frame extends JFrame implements ActionListener{
 	item = new JMenuItem("Check %");
 	item.addActionListener(this);
 	statics.add(item);
-	item = new JMenuItem("View Graph");
+
+	
+	item = new JMenuItem("Graph for mid");
 	item.addActionListener(this);
-	statics.add(item);
+	graph.add(item);
+	item = new JMenuItem("Graph for last");
+	item.addActionListener(this);
+	graph.add(item);
+	item = new JMenuItem("Graph for report");
+	item.addActionListener(this);
+	graph.add(item);
+	item = new JMenuItem("Graph for quiz");
+	item.addActionListener(this);
+	graph.add(item);
+	item = new JMenuItem("Graph for pres");
+	item.addActionListener(this);
+	graph.add(item);
+	item = new JMenuItem("Graph for report");
+	item.addActionListener(this);
+	graph.add(item);
+	item = new JMenuItem("Graph for assent");
+	item.addActionListener(this);
+	graph.add(item);
+
+
+
+
 	
 	
 	mb.add(file);
@@ -117,7 +151,47 @@ public class Frame extends JFrame implements ActionListener{
 	mb.add(ratio);
 	mb.add(stu_manage);
 	mb.add(statics);
+	mb.add(graph);
 	setJMenuBar(mb);
+	}
+	void constructLayout() {
+		JPanel p1 = new JPanel(new GridLayout(3,1,0,0));
+		JPanel p1_1 = new JPanel(new FlowLayout());
+		JPanel p1_2 = new JPanel(new FlowLayout());
+		JPanel p1_3 = new JPanel(new FlowLayout());
+		JLabel jl_current_subj = new JLabel("현재 작업 중인 과목 ");
+		JTextField tf_current_subj = new JTextField(5);
+
+
+		add(p1);
+		p1.add(p1_1);
+		p1_1.add(jl_current_subj);
+		p1_1.add(tf_current_subj);
+		tf_current_subj.setEnabled(false);
+//		JPanel p2 = new JPanel();
+//		add(p2);
+//		p2.add(new JLabel("2"));
+//
+//		
+		JPanel p3 = new JPanel();
+		add(p3);
+		
+		Border lineBorder = BorderFactory.createLineBorder(Color.BLACK, 1);
+		DefaultListModel model = new DefaultListModel();
+		JList studentList = new JList(model);
+		JScrollPane jp1 = new JScrollPane(studentList);
+		studentList.setVisibleRowCount(15);
+			//studentList.setFont(f2);
+			studentList.setBorder(lineBorder);
+		model.addElement("ddd");
+		model.addElement("---================-----------------------------------------------");
+		model.addElement("");
+		
+		p3.add(jp1);
+//		JPanel p4 = new JPanel();
+//		add(p4);
+//		p4.add(new JLabel("그래프 "));
+		
 	}
 	
 
@@ -137,7 +211,7 @@ public class Frame extends JFrame implements ActionListener{
 			
 		case "chgweight":
 			JFrame f_chgweight = new JFrame("Chgweight");
-			f_chgweight.setSize(500, 150);
+			f_chgweight.setSize(600, 150);
 			f_chgweight.setVisible(true);
 			f_chgweight.setLayout(new GridLayout(3,1,0,0));
 			JLabel 	jl_weight = new JLabel("중간       기말       과제       퀴즈       발표       보고서       출결 순입니다.");
@@ -169,10 +243,46 @@ public class Frame extends JFrame implements ActionListener{
 			f_chgweight.add(p3_chgweight);
 			p3_chgweight.add(save_chgweight);
 			
-			
-			
 			break;
 			
+		case "chgratio":
+			JFrame f_chgratio = new JFrame("Chgratio");
+			f_chgratio.setSize(600, 150);
+			f_chgratio.setVisible(true);
+			f_chgratio.setLayout(new GridLayout(3,1,0,0));
+			JLabel 	jl_ratio = new JLabel("A+       A0        B+       B0       C+       C0       D       F 순입니다."); 
+			JTextField tf_Aplus = new JTextField("15",5);
+			JTextField tf_Azero = new JTextField("15",5);
+			JTextField tf_Bplus = new JTextField("15",5);
+			JTextField tf_Bzero = new JTextField("15",5);
+			JTextField tf_Cplus = new JTextField("10",5);	
+			JTextField tf_Czero = new JTextField("10",5);
+			JTextField tf_D = new JTextField("10",5);
+			JTextField tf_F = new JTextField("10",5);
+			JButton save_chgratio = new JButton("Save");
+			save_chgratio.setEnabled(false);
+
+			
+			JPanel p1_chgratio = new JPanel(new FlowLayout());
+			f_chgratio.add(p1_chgratio);
+			p1_chgratio.add(jl_ratio);
+			
+			JPanel p2_chgratio = new JPanel(new FlowLayout());
+			f_chgratio.add(p2_chgratio);
+			p2_chgratio.add(tf_Aplus);
+			p2_chgratio.add(tf_Azero);
+			p2_chgratio.add(tf_Bplus);
+			p2_chgratio.add(tf_Bzero);
+			p2_chgratio.add(tf_Cplus);
+			p2_chgratio.add(tf_Czero);
+			p2_chgratio.add(tf_D);
+			p2_chgratio.add(tf_F);
+			
+			JPanel p3_chgratio = new JPanel(new FlowLayout());
+			f_chgratio.add(p3_chgratio);
+			p3_chgratio.add(save_chgratio);
+
+			break;
 		
 		case "Enter stu":
 			JFrame f_enter = new JFrame("Enter stu");
@@ -273,6 +383,20 @@ public class Frame extends JFrame implements ActionListener{
 
 			break;
 			
+		
+		case "Graph for mid":
+
+			
+	        break;
+	        
+	        
+		case "Graph for last":
+			SwingUtilities.invokeLater(() -> {
+			      ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
+			      example.setSize(800, 400);
+			      example.setLocationRelativeTo(null);
+			      example.setVisible(true);
+			    });
 		}
 		
 	}
