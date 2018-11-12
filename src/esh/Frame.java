@@ -58,57 +58,75 @@ public class Frame extends JFrame implements ActionListener{
 	item = new JMenuItem("Save CSV");
 	item.addActionListener(this);
 	file.add(item);
-	item = new JMenuItem("exit");
+	item = new JMenuItem("Exit");
 	item.addActionListener(this);
 	file.add(item);
 	
-	item = new JMenuItem("webprog");
+	item = new JMenuItem("WEBPROG");
 	item.addActionListener(this);
 	subj.add(item);
-	item = new JMenuItem("oop");
+	item = new JMenuItem("OOP");
 	item.addActionListener(this);
 	subj.add(item);
-	item = new JMenuItem("aoop");
+	item = new JMenuItem("AOOP");
 	item.addActionListener(this);
 	subj.add(item);
 	
-	item = new JMenuItem("chgweight");
+	item = new JMenuItem("Chgweight");
 	item.addActionListener(this);
 	ratio.add(item);
-	item = new JMenuItem("chgratio");
+	item = new JMenuItem("Chgratio");
 	item.addActionListener(this);
 	ratio.add(item);
 	
 	item = new JMenuItem("Enter stu");
 	item.addActionListener(this);
 	stu_manage.add(item);
-	item = new JMenuItem("modify stu");
+	item = new JMenuItem("Modify stu");
 	item.addActionListener(this);
 	stu_manage.add(item);
-	item = new JMenuItem("delete stu");
+	item = new JMenuItem("Delete stu");
 	item.addActionListener(this);
 	stu_manage.add(item);
-	
-	item = new JMenuItem("modify score");
+
+	item = new JMenuItem("Enter score");
 	item.addActionListener(this);
 	score_manage.add(item);
-	item = new JMenuItem("calc grade");
+	item = new JMenuItem("Modify score");
+	item.addActionListener(this);
+	score_manage.add(item);
+	item = new JMenuItem("Calc grade");
 	item.addActionListener(this);
 	score_manage.add(item);
 	
-	item = new JMenuItem("rank");
+	item = new JMenuItem("Rank");
 	item.addActionListener(this);
 	statics.add(item);
-	item = new JMenuItem("average");
+	item = new JMenuItem("Average of Total");
+	item.addActionListener(this);
+	statics.add(item);
+	item = new JMenuItem("Average of Mid");
+	item.addActionListener(this);
+	statics.add(item);
+	item = new JMenuItem("Average of Last");
+	item.addActionListener(this);
+	statics.add(item);
+	item = new JMenuItem("Average of Quiz");
+	item.addActionListener(this);
+	statics.add(item);
+	item = new JMenuItem("Average of Pres");
+	item.addActionListener(this);
+	statics.add(item);
+	item = new JMenuItem("Average of Report");
 	item.addActionListener(this);
 	statics.add(item);
 	item = new JMenuItem("Deviation");
 	item.addActionListener(this);
 	statics.add(item);
-	item = new JMenuItem("Sort ascending by Score");
+	item = new JMenuItem("Sort ascending by Total Score");
 	item.addActionListener(this);
 	statics.add(item);
-	item = new JMenuItem("Sort descending by Score");
+	item = new JMenuItem("Sort descending by Total Score");
 	item.addActionListener(this);
 	statics.add(item);
 	item = new JMenuItem("Sort by stunum");
@@ -150,6 +168,7 @@ public class Frame extends JFrame implements ActionListener{
 	mb.add(subj);
 	mb.add(ratio);
 	mb.add(stu_manage);
+	mb.add(score_manage);
 	mb.add(statics);
 	mb.add(graph);
 	setJMenuBar(mb);
@@ -184,12 +203,13 @@ public class Frame extends JFrame implements ActionListener{
 			//studentList.setFont(f2);
 			studentList.setBorder(lineBorder);
 		model.addElement("ddd");
-		model.addElement("---================-----------------------------------------------");
+		model.addElement("---================"
+				+ "-----------------------------------------------");
 		model.addElement("");
 		
 		p3.add(jp1);
 //		JPanel p4 = new JPanel();
-//		add(p4);
+//		add(p4); 
 //		p4.add(new JLabel("그래프 "));
 		
 	}
@@ -209,7 +229,7 @@ public class Frame extends JFrame implements ActionListener{
 			break;
 			
 			
-		case "chgweight":
+		case "Chgweight":
 			JFrame f_chgweight = new JFrame("Chgweight");
 			f_chgweight.setSize(600, 150);
 			f_chgweight.setVisible(true);
@@ -245,7 +265,7 @@ public class Frame extends JFrame implements ActionListener{
 			
 			break;
 			
-		case "chgratio":
+		case "Chgratio":
 			JFrame f_chgratio = new JFrame("Chgratio");
 			f_chgratio.setSize(600, 150);
 			f_chgratio.setVisible(true);
@@ -291,7 +311,7 @@ public class Frame extends JFrame implements ActionListener{
 			f_enter.setLayout(new GridLayout(3,1,0,0));
 			JLabel jl_name_enter = new JLabel("이름");
 			JLabel jl_stunum_enter = new JLabel("학번");
-			JLabel jl_retake_enter = new JLabel("Retake");
+			JLabel jl_retake_enter = new JLabel("Team");
 			JLabel jl_unique_enter = new JLabel("Unique");
 			JTextField tf_name_enter = new JTextField("", 5); // 이름입력
 			JTextField tf_stunum_enter = new JTextField("", 7); // 학번입력 
@@ -320,14 +340,14 @@ public class Frame extends JFrame implements ActionListener{
 
 			break;
 			
-		case "modify stu":
+		case "Modify stu":
 			JFrame f_mod = new JFrame("Enter stu");
 			f_mod.setSize(300, 200);
 			f_mod.setVisible(true);
 			f_mod.setLayout(new GridLayout(3,1,0,0));
 			JLabel jl_name_mod = new JLabel("이름");
 			JLabel jl_stunum_mod = new JLabel("학번");
-			JLabel jl_retake_mod = new JLabel("Retake");
+			JLabel jl_retake_mod = new JLabel("Team");
 			JLabel jl_unique_mod = new JLabel("Unique");
 			JTextField tf_name_mod = new JTextField("", 5); // 이름입력
 			JTextField tf_stunum_mod = new JTextField("", 7); // 학번입력 
@@ -358,7 +378,7 @@ public class Frame extends JFrame implements ActionListener{
 			
 			break;
 			
-		case "delete stu":
+		case "Delete stu":
 			JFrame f_del = new JFrame("Delete stu");
 			f_del.setSize(300, 200);
 			f_del.setVisible(true);
