@@ -56,12 +56,13 @@ public class Enterstu {
 					String unique = tf_unique_enter.getText();
 					
 					s.addStudent(new Student(name,stunum,team,unique));
-					
-					
+					s.view(s.getName());
 				}
 			}
 			catch(Exception e) {
-
+				tf_name_enter.setText("과목을");
+				tf_stunum_enter.setText("먼저");
+				tf_unique_enter.setText("입력하세요");
 			}
 			
 		};

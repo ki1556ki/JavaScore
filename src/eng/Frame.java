@@ -286,43 +286,7 @@ public class Frame extends JFrame implements ActionListener{
 			break;
 			
 		case "Modify stu":
-			JFrame f_mod = new JFrame("Enter stu");
-			f_mod.setSize(300, 200);
-			f_mod.setVisible(true);
-			f_mod.setLayout(new GridLayout(3,1,0,0));
-			JLabel jl_name_mod = new JLabel("이름");
-			JLabel jl_stunum_mod = new JLabel("학번");
-			JLabel jl_retake_mod = new JLabel("Team");
-			JLabel jl_unique_mod = new JLabel("Unique");
-			JTextField tf_name_mod = new JTextField("", 5); // 이름입력
-			JTextField tf_stunum_mod = new JTextField("", 7); // 학번입력 
-			JTextField tf_retake_mod = new JTextField("", 2); // 
-			JTextField tf_unique_mod = new JTextField("", 7); // 
-			JButton search_mod = new JButton("Search");
-			JButton mod = new JButton("Modify");
-			mod.setEnabled(false);
-
-
-			
-			JPanel p1_mod = new JPanel(new FlowLayout());
-			f_mod.add(p1_mod);
-			p1_mod.add(jl_name_mod);
-			p1_mod.add(tf_name_mod);
-			p1_mod.add(jl_stunum_mod);
-			p1_mod.add(tf_stunum_mod);
-			
-			JPanel p2_mod = new JPanel(new FlowLayout());
-			f_mod.add(p2_mod);
-			p2_mod.add(jl_retake_mod);
-			p2_mod.add(tf_retake_mod);
-			p2_mod.add(jl_unique_mod);
-			p2_mod.add(tf_unique_mod);
-			
-			JPanel p3_mod = new JPanel(new FlowLayout());
-			f_mod.add(p3_mod);
-			p3_mod.add(mod);
-			p3_mod.add(search_mod);
-			
+			new Modifystu(s);
 			break;
 			
 		case "Delete stu":
@@ -414,7 +378,6 @@ public class Frame extends JFrame implements ActionListener{
 			break;
 			
 		case "Modify Attend":
-			
 			JFrame f_modifyattend = new JFrame("Enter Attend");
 			f_modifyattend.setSize(500, 200);
 			f_modifyattend.setVisible(true);
@@ -472,6 +435,8 @@ public class Frame extends JFrame implements ActionListener{
 			p3_modifyattend.add(tf_w15_modifyattend);
 			p3_modifyattend.add(tf_w16_modifyattend);
 			
+			
+
 			
 			break;
 		

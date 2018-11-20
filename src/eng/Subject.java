@@ -149,6 +149,9 @@ public class Subject {
 	
 	public void view(String subj) {
 		std_list.forEach((x)-> {
+			
+			System.out.print(name);
+			System.out.print("    ");
 			System.out.print(x.getName());
 			System.out.print("    ");
 			System.out.print(x.getStd_num());
